@@ -51,6 +51,7 @@ class DigestionChoiceViewSet(viewsets.ModelViewSet):
         return obj
 
 class SmokingViewSet(viewsets.ModelViewSet):
+
     serializer_class = SmokingSerializer
     queryset = Smoking.objects.all()
 
