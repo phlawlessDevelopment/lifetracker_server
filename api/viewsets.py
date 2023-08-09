@@ -25,6 +25,14 @@ class MoodViewSet(viewsets.ModelViewSet):
 class MoodChoiceViewSet(viewsets.ModelViewSet):
     serializer_class = MoodChoiceSerializer
     queryset = MoodChoice.objects.all()
+    lookup_field = 'text'
+
+    def get_object(self):
+        queryset = self.get_queryset()
+        filter_kwargs = {self.lookup_field: self.kwargs[self.lookup_field]}
+        obj = queryset.get(**filter_kwargs)
+        self.check_object_permissions(self.request, obj)
+        return obj
 
 class DigestionViewSet(viewsets.ModelViewSet):
     serializer_class = DigestionSerializer
@@ -33,6 +41,14 @@ class DigestionViewSet(viewsets.ModelViewSet):
 class DigestionChoiceViewSet(viewsets.ModelViewSet):
     serializer_class = DigestionChoiceSerializer
     queryset = DigestionChoice.objects.all()
+    lookup_field = 'text'
+
+    def get_object(self):
+        queryset = self.get_queryset()
+        filter_kwargs = {self.lookup_field: self.kwargs[self.lookup_field]}
+        obj = queryset.get(**filter_kwargs)
+        self.check_object_permissions(self.request, obj)
+        return obj
 
 class SmokingViewSet(viewsets.ModelViewSet):
     serializer_class = SmokingSerializer

@@ -1,7 +1,7 @@
 from django.db import models
 
 class LifetrackModel(models.Model):
-    notes = models.CharField(max_length=256)
+    notes = models.CharField(max_length=256, null=True, blank=True)
     date_time = models.DateTimeField()
 
 
